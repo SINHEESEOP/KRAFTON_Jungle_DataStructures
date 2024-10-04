@@ -15,7 +15,7 @@
 연습 순서는 연결 리스트(Linked List) -> 스택과 큐(Stack and Queue) -> 이진 트리(Binary Tree) -> 이진 탐색 트리(Binary Search Tree)일 수 있습니다.
 
 <hr>
-<h3>원본<h3>
+<h3>원본</h3>
 The practicing sequence could be Linked List -> Stack n Queue -> Binary Tree -> Binary Search Tree.
 Approperiate steps to do each question: Read the question's requirement in question sheet -> Find the corresponding main frame and copy it to your C compiler, i.e. Code::Block -> Finish the function part -> Try compiling and input some test cases.
 The main frames of each question are provided such that the function part is left empty for you to write and fill in the blank to complete the question. Basic functionalities like POP/PUSH/DEQUEUE/ENQUEUE/REMOVE_LINKED_NODE/FIND_LINKED_NODE are already provided in the main frame. You don't need to write these basic functions.
