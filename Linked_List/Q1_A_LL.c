@@ -97,39 +97,60 @@ int main()
 
 //////////////////////////////////////////////////////////////////////////////////
 
-int insertSortedLL(LinkedList *ll, int item)
-{
-	/* 여기에 코드를 추가하세요 */
-	ListNode *newNode, *prev, *cur;
+// int insertSortedLL(LinkedList *ll, int item)
+// {
+// 	/* 여기에 코드를 추가하세요 */
+// 	ListNode *newNode, *prev, *cur;
+// 	int index = 0;
+//
+// 	// 새 노드 생성
+// 	newNode = (ListNode *)malloc(sizeof(ListNode));
+// 	if (newNode == NULL)
+// 		return -1;
+//
+// 	newNode->item = item;
+// 	newNode->next = NULL;
+//
+// 	// 빈 리스트일 경우, 첫 번째 노드로 삽입
+// 	if (ll->head == NULL || ll->head->item >= item) {
+// 		newNode->next = ll->head;
+// 		ll->head = newNode;
+// 	} else {
+// 		// 노드들이 정렬된 상태에서 삽입 위치 찾기
+// 		cur = ll->head;
+// 		while (cur != NULL && cur->item < item) {
+// 			prev = cur;
+// 			cur = cur->next;
+// 			index++;
+// 		}
+// 		prev->next = newNode;
+// 		newNode->next = cur;
+// 	}
+//
+// 	ll->size++;
+// 	return index;  // 삽입된 위치의 인덱스 반환
+// }
+
+int insertSortedLL(LinkedList *ll, int item) {
+
+	ListNode *cur = ll->head;
 	int index = 0;
 
-	// 새 노드 생성
-	newNode = (ListNode *)malloc(sizeof(ListNode));
-	if (newNode == NULL)
-		return -1;
-
-	newNode->item = item;
-	newNode->next = NULL;
-
-	// 빈 리스트일 경우, 첫 번째 노드로 삽입
-	if (ll->head == NULL || ll->head->item >= item) {
-		newNode->next = ll->head;
-		ll->head = newNode;
-	} else {
-		// 노드들이 정렬된 상태에서 삽입 위치 찾기
-		cur = ll->head;
-		while (cur != NULL && cur->item < item) {
-			prev = cur;
-			cur = cur->next;
-			index++;
-		}
-		prev->next = newNode;
-		newNode->next = cur;
+	// 리스트를 순회하면서 삽입할 위치를 찾기 (정렬된 순서 유지)
+	while (cur != NULL && cur->item < item) {
+		cur = cur->next;
+		index++;
 	}
 
-	ll->size++;
-	return index;  // 삽입된 위치의 인덱스 반환
+	// insertNode 함수를 사용하여 값을 삽입
+	if (insertNode(ll, index, item) == 0) {
+		return index;  // 삽입된 위치의 인덱스 반환
+	} else {
+		return -1;  // 삽입 실패 시 -1 반환
+	}
+
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////////
 
