@@ -108,7 +108,7 @@ int main() {
 
 
 void alternateMergeLinkedList(LinkedList *ll1, LinkedList *ll2) {
-    if (ll1 == NULL || ll2 == NULL || ll2->head == NULL)
+    if (ll1 == NULL || ll2 == NULL)
         return;
 
     ListNode *cur1 = ll1->head;
@@ -257,3 +257,4 @@ int removeNode(LinkedList *ll, int index) {
 
     return -1;
 }
+

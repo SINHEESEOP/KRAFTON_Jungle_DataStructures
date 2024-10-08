@@ -84,12 +84,98 @@ int main()
 
 //////////////////////////////////////////////////////////////////////////////////
 
+// void moveOddItemsToBack(LinkedList *ll) {
+// 	/* add your code here */
+//
+// 	ListNode *cur, *next, *last;
+// 	LinkedList *ll2 = (LinkedList *)malloc(sizeof(LinkedList));
+//
+// 	cur = ll->head->next;
+//
+// 	int index = 0;
+// 	int index2 = 0;
+//
+// 	if (cur != NULL && cur->item % 2 == 0) {
+// 		insertNode(&ll, index, cur->item);
+// 		index++;
+// 	}
+//
+// 	while (cur != NULL) {
+//
+// 		next = cur->next;
+//
+// 		if (next->item % 2 == 0) {
+// 			insertNode(&ll, index, next->item);
+// 			index++;
+// 		} else {
+// 			insertNode(&ll2, index2, next->item);
+// 			index2++;
+// 		}
+// 	}
+//
+// 	last = findNode(ll, index);
+// 	findNode(ll2, index2)->next = last;
+//
+// }
+
+// 개선 ver
 void moveOddItemsToBack(LinkedList *ll) {
-	/* add your code here */
-	
+	if (ll == NULL || ll->head == NULL) return;
 
+	ListNode *cur, *next, *last;
+	LinkedList *ll2 = (LinkedList *)malloc(sizeof(LinkedList));
+	ll2->head = NULL;
+	ll2->size = 0;
 
+	cur = ll->head;
+	int index = 0;
+	int index2 = 0;
+
+	while (cur != NULL) {
+		next = cur->next;
+
+		if (cur->item % 2 == 0) {
+			insertNode(ll, index, cur->item);
+			index++;
+		} else {
+			insertNode(ll2, index2, cur->item);
+			index2++;
+		}
+		cur = next;
+	}
+
+	if (ll->head == NULL) {
+		ll->head = ll2->head;
+	} else {
+		last = findNode(ll, index - 1);
+		last->next = ll2->head;
+	}
+
+	ll->size = index + index2;
+	free(ll2);
 }
+
+// void moveOddItemsToBack(LinkedList *ll) {
+// 	if (ll == NULL || ll->head == NULL) return;
+//
+// 	ListNode *cur = ll->head;
+// 	int index = 0;
+// 	int originalSize = ll->size;
+//
+// 	// 리스트를 순회하며 홀수 항목을 뒤로 이동시킵니다.
+// 	for (int i = 0; i < originalSize; i++) {
+// 		if (cur->item % 2 != 0) { // 현재 항목이 홀수인 경우
+// 			int oddValue = cur->item;
+// 			cur = cur->next;
+// 			removeNode(ll, index); // 기존의 removeNode 함수를 활용하여 노드를 제거합니다.
+// 			insertNode(ll, ll->size, oddValue); // 기존의 insertNode 함수를 활용하여 홀수를 리스트의 끝에 삽입합니다.
+// 		} else {
+// 			cur = cur->next;
+// 			index++;
+// 		}
+// 	}
+// }
+
 
 ///////////////////////////////////////////////////////////////////////////////////
 
