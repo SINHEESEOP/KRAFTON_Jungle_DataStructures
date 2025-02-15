@@ -1,5 +1,5 @@
 연습 순서는 다음과 같습니다: 연결 리스트(Linked List) -> 스택과 큐(Stack and Queue) -> 이진 트리(Binary Tree) -> 이진 탐색 트리(Binary Search Tree).
-
+ 
 각 문제를 해결하는 적절한 단계:
 1. 문제지의 요구 사항을 읽는다.
 2. 해당하는 메인 프레임을 찾아 C 컴파일러(예: Code::Block)에 복사한다.
